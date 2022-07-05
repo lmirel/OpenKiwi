@@ -1,0 +1,6 @@
+
+#build it
+docker build -t openkiwi .
+
+#run it
+docker run -it -v $(pwd)/work:/OpenKiwi/OpenKiwi-predict-enzh/work openkiwi
