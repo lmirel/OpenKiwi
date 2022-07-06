@@ -1,6 +1,17 @@
 
-#build it
+#retrieve Dockerfile from https://github.com/lmirel/OpenKiwi/raw/predict/Dockerfile
+#and save it in the working folder
+
+#build it with:
 docker build -t openkiwi .
 
-#run it
-docker run -it -v $(pwd)/work:/OpenKiwi/OpenKiwi-predict-enzh/work openkiwi
+#requires the input.tsv and pretrained.ckpt files in the current dir
+#check release v2.1.0 for pretrained models: https://github.com/lmirel/OpenKiwi/releases/tag/2.1.0
+#input.tsv will have the format: <id1><tab><id2><tab><src><tab><tgt>
+#output.tsv will be generated and will include predictions on column 3
+
+#run it in Linux: will mount current dir in image 'work' dir
+docker run -it -v $(pwd):/OpenKiwi/OpenKiwi-predict/work openkiwi
+
+#run it in Windows: will mount current dir in image 'work' dir
+docker run -it -v %cd%:/OpenKiwi/OpenKiwi-predict/work openkiwi
