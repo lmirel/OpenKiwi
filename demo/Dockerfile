@@ -20,5 +20,5 @@ RUN apt -y autoremove && apt clean && rm -rf /var/lib/apt/lists/*
 #CMD cd OpenKiwi-predict/ && \
 #    export PROTOCOL_BUFFERS_PYTHON_IMPLEMENTATION=python && \
 #    python3 predict.py && \
-CMD  /bin/bash && \
-     cd work
+CMD  cd work/ && \
+     /bin/bash
