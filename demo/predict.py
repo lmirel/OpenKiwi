@@ -16,8 +16,8 @@ model = kiwi.load_model('runs/estimator/best_model.torch')
 #print(predictions)
 
 # Using readline()
-file1 = open('./work/input.tsv', 'r')
-file_out = open('./work/output.tsv', 'w')
+file1 = open('./input.tsv', 'r')
+file_out = open('./output.tsv', 'w')
 count = 0
 
 while True:
