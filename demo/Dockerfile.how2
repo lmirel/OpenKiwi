@@ -1,10 +1,10 @@
 
 ##instalation and run
 
-#retrieve Dockerfile from https://github.com/lmirel/OpenKiwi/raw/predict013/demo/Dockerfile
-#and save it in the working folder
+#retrieve predict013 branch from https://github.com/lmirel/OpenKiwi/archive/refs/heads/predict013.zip and unzip it
+#locate the 'demo' folder (OpenKiwi-predict013/demo) and use it as workspace - it contains preconfigured training files and initial data for training
 
-#build it with:
+#build the Docker image with:
 docker build -t openkiwi013 .
 
 
