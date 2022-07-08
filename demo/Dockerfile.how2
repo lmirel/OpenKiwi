@@ -1,0 +1,30 @@
+
+##instalation and run
+
+#retrieve Dockerfile from https://github.com/lmirel/OpenKiwi/raw/predict013/demo/Dockerfile
+#and save it in the working folder
+
+#build it with:
+docker build -t openkiwi013 .
+
+
+#run it in Linux: will mount current dir in image 'work' dir
+docker run -it -v $(pwd):/OpenKiwi/work openkiwi013
+
+#run it in Windows: will mount current dir in image 'work' dir
+docker run -it -v %cd%:/OpenKiwi/work openkiwi013
+
+##training and predicting
+
+#step 1: train the predictor using parallel data
+time kiwi train --config ./train_predictor.yaml
+
+#step 2: train the estimator based on predictor and input data per configuration
+time kiwi train --config ./train_estimator.yaml
+
+#step 3: run the predictor script
+#requires the input.tsv and trained estimator model in runs/estimator/best_model.torch
+#check release v2.1.0 for pretrained models: https://github.com/lmirel/OpenKiwi/releases/tag/2.1.0
+#input.tsv will have the format: <id1><tab><id2><tab><src><tab><tgt>
+#output.tsv will be generated and will include predictions on column 3
+python3 predict.py
